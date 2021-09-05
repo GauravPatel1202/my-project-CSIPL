@@ -13,7 +13,9 @@ export class AppComponent {
   totalItems : any; 
   constructor() { }
   
-  
+  counter(number:number):any{
+    return new Array(number)
+  }
   ngOnInit(): void {
    fetch(`https://api.instantwebtools.net/v1/passenger?page=${1}&size=${this.itemsPerPage}`).then((res)=>res.json()).then((data: any) => {
       this.passenger =  data.data;

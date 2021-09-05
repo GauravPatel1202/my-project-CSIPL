@@ -20,9 +20,7 @@ import {
 export class PaginationDirective implements OnChanges, OnInit {
   @Input() pageNo = 1;
   @Input() totalPages = 1;
-
   @Output() pageChange = new EventEmitter<number>();
-
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
@@ -80,6 +78,9 @@ export class PaginationDirective implements OnChanges, OnInit {
 
   last() {
     this.setPage(this.totalPages);
+  }
+  atIndex(value:any) {
+    this.setPage(value);
   }
 
   private setValue(val: string | number) {
