@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { TableCompComponent } from './table-comp/table-comp.component';
+import { PaginationDirective } from './pagination/pagination-directive.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableCompComponent
+    PaginationDirective
   ],
   imports: [
     BrowserModule,

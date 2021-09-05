@@ -6,5 +6,45 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<app-table-comp></app-table-comp>
+
 <router-outlet></router-outlet>
+<div>
+  <table id="customers">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>trips</th>
+  </tr>
+ 
+  <tr *ngFor="
+      let item of passenger
+        | paginate
+          : {
+              itemsPerPage: itemsPerPage,
+              currentPage: page,
+              totalItems: totalItems
+            }
+    ">
+    <td>{{item._id}}</td>
+    <td>{{ item.name }}</td>
+    <td>{{item.trips}}</td>
+  </tr>
+ 
+</table>
+<button (click)="pagination.first()" [disabled]="pagination.isFirst">
+  <<
+</button>
+<button (click)="pagination.prev()" [disabled]="pagination.isFirst">
+  <
+</button>
+
+<span appPagination
+  #pagination="appPagination"
+  [totalPages]="totalItems" (pageChange)="onPageChange($event)"> {{ pagination.pageNo }} / {{ pagination.totalPages }}</span>
+
+<button (click)="pagination.next()" [disabled]="pagination.isLast">
+  >
+</button>
+<button (click)="pagination.last()" [disabled]="pagination.isLast">
+  >>
+</button>
